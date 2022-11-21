@@ -1,12 +1,12 @@
 import Joi from 'joi';
 
-const document = Joi.string().regex(new RegExp('^[1-9]{1}[0-9]{5,9}$')).min(6).max(10);
+const document = Joi.string().regex(new RegExp('^[0-9]{1}[0-9]{5,9}$')).min(6).max(10);
 
-const id = Joi.string().regex(new RegExp('^[1-9]{1}[0-9]*$'))
+const id = Joi.string().regex(new RegExp('^[0-9]{1}[0-9]*$'))
 
 const result = Joi.number();
 
-const names = Joi.string().regex(new RegExp('^[a-zA-ZÀ-ÿ \\u00f1 \\u00d1 \\s]+$')).min(3).max(20)
+const names = Joi.string().min(3).max(20)
   .messages({
     'string.base': 'names must be a string',
     'string.pattern.base': 'Error in names field',
@@ -14,7 +14,7 @@ const names = Joi.string().regex(new RegExp('^[a-zA-ZÀ-ÿ \\u00f1 \\u00d1 \\s]+
     'string.min': 'names length must be at least 3 characters long',
     'any.required': 'names field is requerid'
   });
-const surnames = Joi.string().regex(new RegExp('^[a-zA-ZÀ-ÿ \\u00f1 \\u00d1 \\s]+$')).min(3).max(30)
+const surnames = Joi.string().min(3).max(30)
   .messages({
     'string.base': 'surnames must be a string',
     'string.pattern.base': 'Error in surnames field',
