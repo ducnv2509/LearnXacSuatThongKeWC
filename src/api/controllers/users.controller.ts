@@ -29,7 +29,8 @@ export const modifyMatchFromUser = async (req: Request, res: Response, next: Nex
       throw new ErrorHandler(404, 40401, 'User or match not found')
     }
     let today = new Date()
-    if(today.getTime() > (match.date).getTime()) {
+    console.log('this is log: ', typeof new Date(match.date).getTime());
+    if(today.getTime() > new Date(match.date).getTime()) {
       throw new ErrorHandler(423, 42301, 'Match cannot be modified')
     }
     const userMatchUpdated = await UserMatchesService.findByUserAndIdAndUpdate(userId, id, {local_score, visitor_score})?.lean();
