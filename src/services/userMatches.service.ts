@@ -80,22 +80,26 @@ export class UserMatchesService {
     user_id: string, match_id: string,
     value: string, amount: number
   ) {
-    console.log(value);
-    
     if (this.model) {
       const bet: WinBet = {
         betAmount: amount,
         value: value
       }
-      let update = {
-        $set: { 'bets.winBet': bet }
-      }
-      return this.model.findOneAndUpdate(
-        {
+      let update = { $set: { 'bets.winBet': bet } }
+      if (await this.exists(user_id, match_id)) {
+        return this.model.findOneAndUpdate(
+          {
+            user_id: user_id,
+            match_id: match_id
+          }, update
+        );
+      } else {
+        return this.model.create({
           user_id: user_id,
-          match_id: match_id
-        }, update
-      );
+          match_id: match_id,
+          bets: { winBet: bet }
+        })
+      }
     }
     return;
   }
@@ -110,14 +114,8 @@ export class UserMatchesService {
         localBet: local,
         visitorBet: visitor
       }
-      let update = {
-        $set: { 'bets.scoreBet': bet }
-      }
-      console.log("aaa111");
-      
+      let update = { $set: { 'bets.scoreBet': bet } }
       if (await this.exists(user_id, match_id)) {
-        console.log("eee");
-        
         return this.model.findOneAndUpdate(
           {
             user_id: user_id,
@@ -125,11 +123,12 @@ export class UserMatchesService {
           }, update
         );
       } else {
-        console.log("bbbb");
-        
-        return this.model.create({ user_id: user_id, match_id: match_id, bets: { scoreBet: bet } })
+        return this.model.create({
+          user_id: user_id,
+          match_id: match_id,
+          bets: { scoreBet: bet }
+        })
       }
-
     }
     return;
   }

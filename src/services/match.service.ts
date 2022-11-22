@@ -33,8 +33,9 @@ export class MatchService {
     if (this.model) {
       let update = {
         $set: {
+          'has_played': true,
           'local_team.result': localScore,
-          'visiting_team.result': visitingScore
+          'visiting_team.result': visitingScore,
         }
       }
       return this.model.findOneAndUpdate(
