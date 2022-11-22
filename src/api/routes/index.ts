@@ -5,6 +5,7 @@ import { router as authRouter } from './auth.router';
 import { router as usersRouter } from './users.router';
 import { router as teamsRouter } from './teams.router';
 import { router as matchesRouter } from './matches.router';
+import { router as betRouter } from './bet.router';
 
 export const routerApi: Function = (app: Application) => {
   const router = Router();
@@ -13,4 +14,5 @@ export const routerApi: Function = (app: Application) => {
   router.use('/users', usersRouter);
   router.use('/teams', teamsRouter);
   router.use('/matches', matchesRouter);
+  router.use('/bet', betRouter);
 }
