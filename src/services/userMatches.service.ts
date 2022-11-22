@@ -3,6 +3,8 @@ import { Connection, connections, Error, Model } from 'mongoose';
 import config from '../config';
 import { userMatchesSchema } from '../schemas';
 import { IMatchResult } from '../types/IUser';
+import { MatchService } from './match.service';
+import { UserService } from './user.service';
 
 export interface WinBet {
   value: string | null,
@@ -48,23 +50,6 @@ export class UserMatchesService {
       return this.model.find({ match_id: match_id }, projection);
     }
     return;
-  }
-
-  static create(matchData: BetData) {
-    this.createModel();
-    if (this.model) {
-      return this.model.create(matchData);
-    }
-    return;
-  }
-
-  static async createAll(matches: BetData[]) {
-
-    for (let match of matches) {
-      if (!(await this.exists(match.user_id, match.match_id))) {
-        await this.create(match)
-      }
-    }
   }
 
   static async exists(user_id: string, match_id: string) {
@@ -140,6 +125,84 @@ export class UserMatchesService {
     }
     if (!this.model) {
       throw new Error('Database not connected');
+    }
+  }
+
+  static async calculatePoint() {
+    this.createModel()
+    const users: any = {}; const matchs: any = {}
+    const rateScore = 2; const rateWinner = 1.5;
+    if (this.model) {
+      const user_matchs: BetData[] = await this.model.find()
+
+      for (let user_match of user_matchs) {
+        let diff = 0;
+        const user_id = user_match.user_id;
+        const match_id = user_match.match_id;
+
+        if (!users[user_id]) {
+          console.log("aaa", 'user');
+
+          users[user_id] = await UserService.findById(user_id);
+          users[user_id].isCalulate = false;
+        } else {
+          console.log("abc");
+
+        }
+        if (!matchs[match_id]) {
+          matchs[match_id] = await MatchService.findById(match_id);
+          // users[user_id].isCalulate = false;
+        }
+        const user: any = users[user_id];
+        const match: any = matchs[match_id];
+        console.log(JSON.stringify(match));
+
+
+        if (match && user && match.has_played === true) {
+          if (user_match.bets && user_match.bets.scoreBet) {
+            const isScoreOke =
+              match.local_team.result === user_match.bets.scoreBet.localBet &&
+              match.visiting_team.result === user_match.bets.scoreBet.visitorBet
+            if (isScoreOke) {
+              diff = Number(user_match.bets.scoreBet.betAmount) * rateScore;
+              
+            } else {
+              console.log("zzzz");
+              
+              diff = -Number(user_match.bets.scoreBet.betAmount);
+            }
+            console.log(match.local_team.result, user_match.bets.scoreBet.localBet);
+            console.log( match.visiting_team.result,user_match.bets.scoreBet.visitorBet)
+            
+          }
+          if (user_match.bets && user_match.bets.scoreBet) {
+            let result = "tie"
+            if (Number(match.local_team.result) > Number(match.local_team.result)) {
+              result = "local"
+            }
+            if (Number(match.local_team.result) > Number(match.local_team.result)) {
+              result = "visitor"
+            }
+            const isScoreOke = user_match.bets.winBet.value === result;
+            if (isScoreOke) {
+              diff += Number(user_match.bets.winBet.betAmount) * rateWinner;
+            } else {
+              diff -= Number(user_match.bets.winBet.betAmount);
+            }
+          }
+          console.log(diff);
+          
+
+          if (!user.isCalulate) {
+            user.score = user.origin_score + diff;
+            user.isCalulate = true;
+          } else { user.score += diff; }
+          await user.save();
+          console.log(user.score);
+          
+        }
+
+      }
     }
   }
 

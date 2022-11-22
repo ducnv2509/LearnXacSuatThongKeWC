@@ -1,18 +1,12 @@
 import { json, Router } from 'express';
 
 import { getUsersRanking, register, updateUser } from '../controllers';
+import { calculatePoint } from '../controllers/users.controller';
 import { validatorHandler, verifyJWT } from '../middlewares';
 
 export const router: Router = Router();
 
-// router.patch(
-//   '/:userId/matches/:id/scoreBet',
-//   json(),
-//   verifyJWT,
-//   validatorHandler('modifyMatchFromUserParams', 'params'),
-//   validatorHandler('modifyMatchFromUserBody', 'body'),
-//   modifyMatchFromUser
-// )
+router.post('/calculate-point', verifyJWT, calculatePoint)
 
 router.get(
   '/',

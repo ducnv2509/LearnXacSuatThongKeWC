@@ -23,6 +23,10 @@ export const userSchema = new Schema({
     type: String,
     required: true,
   },
+  origin_score: {
+    type: Number,
+    default: 1000000,
+  },
   score: {
     type: Number,
     default: 1000000,

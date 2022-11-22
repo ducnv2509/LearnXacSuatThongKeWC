@@ -12,9 +12,6 @@ import { logger } from './utils';
 import { createApp, createSocket } from './loaders';
 import { mongooseLoader } from './loaders/mongoose.loader';
 
-console.log("check");
-
-
 const startServer: Function = () => {
   mongooseLoader(config.dbUriApp, config.dbNameApp);
   const app: Application = express();

@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { UserService /*,UserMatchesService, MatchService */ } from '../../services';
-// import { BetData } from '../../services/userMatches.service';
+import { UserMatchesService, UserService /*,UserMatchesService, MatchService */ } from '../../services';
 import { ICustomRequest } from '../../types';
 import { getExtraParams, logger, ErrorHandler } from '../../utils';
 
@@ -19,43 +18,19 @@ interface updated {
   third_place?: string,
 }
 
-// export const modifyMatchFromUser = async (req: Request, res: Response, next: NextFunction) => {
-//   const { id, userId } = req.params
-//   const { bet } = req.body
-//   let bets: { localBet: any; visitorBet: any; betAmount: any; }[] = [];
-//   bet.push((e: any) => {
-//     let { scoreBet } = e;
-//     let { localBet, visitorBet, betAmount } = scoreBet;
-//     bets.push({ localBet, visitorBet, betAmount })
-//   })
-//   try {
-//     let user = await UserService.findById(userId)?.lean();
-//     let match = await MatchService.findById(id)?.lean();
-//     if (!user || !match) {
-//       throw new ErrorHandler(404, 40401, 'User or match not found')
-//     }
-//     let today = new Date()
-//     console.log('this is log: ', typeof new Date(match.date).getTime());
-//     if (today.getTime() > new Date(match.date).getTime()) {
-//       throw new ErrorHandler(423, 42301, 'Match cannot be modified')
-//     }
-//     const userMatchUpdated = await UserMatchesService.findByUserAndIdAndUpdate(userId, id, { bets })?.lean();
-//     logger.info(`Modify match ${id} from user ${userId}`, getExtraParams(req));
-//     return res
-//       .status(200)
-//       .json({
-//         message: 'User match updated',
-//         match_id: userMatchUpdated?.match_id
-//       })
-//   } catch (err) {
-//     return next(err);
-//   }
-// }
+export const calculatePoint = async (_: Request, res: Response, next: NextFunction) => {
+  try {
+    await UserMatchesService.calculatePoint();
+    return res.status(200)
+      .json({ message: 'point calculated' })
+  } catch (err) {
+    return next(err);
+  }
+}
 
-export const getUsersRanking = async (req: Request, res: Response, next: NextFunction) => {
+export const getUsersRanking = async (_: Request, res: Response, next: NextFunction) => {
   try {
     let users = await UserService.findAll({ score: true, names: true })?.lean();
-    logger.info('Read usermatches', getExtraParams(req));
     return res
       .status(200)
       .json(users)

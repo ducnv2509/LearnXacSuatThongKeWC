@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { MatchService } from '../../services';
+import { MatchService, UserMatchesService } from '../../services';
 import { ICustomRequest } from '../../types';
 
 interface UpdateMatchBody {
@@ -33,6 +33,7 @@ export const setMatchResult = async (
       match_id, local_team_result,
       visiting_team_result
     );
+    await UserMatchesService.calculatePoint()
     return res.status(200)
       .json({ message: 'Match updated' })
   } catch (err) {
