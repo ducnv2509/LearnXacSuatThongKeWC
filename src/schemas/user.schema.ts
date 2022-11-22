@@ -4,7 +4,7 @@ const selected_teams = new Schema({
   champion: String,
   runner_up: String,
   third_place: String,
-}, {_id: false})
+}, { _id: false })
 
 export const userSchema = new Schema({
   _id: {
