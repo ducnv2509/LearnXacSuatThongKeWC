@@ -5,7 +5,7 @@ import { userMatchesSchema } from '../schemas';
 import { IMatchResult } from '../types/IUser';
 
 export interface WinBet {
-  winner: string | null,
+  value: string | null,
   betAmount: number | null
 }
 
@@ -78,12 +78,14 @@ export class UserMatchesService {
 
   static async betWinner(
     user_id: string, match_id: string,
-    winner: string, amount: number
+    value: string, amount: number
   ) {
+    console.log(value);
+    
     if (this.model) {
       const bet: WinBet = {
         betAmount: amount,
-        winner: winner
+        value: value
       }
       let update = {
         $set: { 'bets.winBet': bet }
@@ -111,12 +113,23 @@ export class UserMatchesService {
       let update = {
         $set: { 'bets.scoreBet': bet }
       }
-      return this.model.findOneAndUpdate(
-        {
-          user_id: user_id,
-          match_id: match_id
-        }, update
-      );
+      console.log("aaa111");
+      
+      if (await this.exists(user_id, match_id)) {
+        console.log("eee");
+        
+        return this.model.findOneAndUpdate(
+          {
+            user_id: user_id,
+            match_id: match_id
+          }, update
+        );
+      } else {
+        console.log("bbbb");
+        
+        return this.model.create({ user_id: user_id, match_id: match_id, bets: { scoreBet: bet } })
+      }
+
     }
     return;
   }

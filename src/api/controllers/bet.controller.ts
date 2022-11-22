@@ -4,7 +4,7 @@ import { ICustomRequest } from "../../types";
 
 interface BetWinnerBody {
     match_id: string,
-    winner: string,
+    value: string,
     betAmount: number
 
 }
@@ -22,7 +22,7 @@ export const betWinner = async (req: ICustomRequest, res: Response, next: NextFu
         const betData = <BetWinnerBody>req.body;
         await UserMatchesService.betWinner(
             user_id, betData.match_id
-            , betData.winner, betData.betAmount
+            , betData.value, betData.betAmount
         )
         return res.status(200).json({ message: 'Bet updated' })
     } catch (err) {

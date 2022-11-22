@@ -16,7 +16,7 @@ const scoreBetSchema = new Schema({
 })
 
 const winBetSchema = new Schema({
-  winner: {
+  value: {
     type: String,
     required: false
   },
