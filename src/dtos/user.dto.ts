@@ -4,7 +4,7 @@ const document = Joi.string().regex(new RegExp('^[0-9]{1}[0-9]{5,9}$')).min(6).m
 
 const id = Joi.string().regex(new RegExp('^[0-9]{1}[0-9]*$'))
 
-const result = Joi.number();
+const result = Joi.array();
 
 const names = Joi.string().min(3).max(20)
   .messages({
@@ -33,9 +33,7 @@ export const modifyMatchFromUserParamsDto = Joi.object({
 })
 
 export const modifyMatchFromUserBodyDto = Joi.object({
-  local_score: result
-    .required(),
-  visitor_score: result
+  bet: result
     .required(),
 })
 

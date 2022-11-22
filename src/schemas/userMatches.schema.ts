@@ -14,12 +14,12 @@ export const userMatchesSchema = new Schema({
     type: String,
     required: true,
   },
-  local_score: {
-    type: Number,
-  },
-  visitor_score: {
-    type: Number,
-  },
+  // local_score: {
+  //   type: Number,
+  // },
+  // visitor_score: {
+  //   type: Number,
+  // },
   bet: [{
 
     scoreBet: {

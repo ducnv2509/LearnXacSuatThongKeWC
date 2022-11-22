@@ -6,7 +6,7 @@ import { validatorHandler, verifyJWT } from '../middlewares';
 export const router: Router = Router();
 
 router.patch(
-  '/:userId/matches/:id',
+  '/:userId/matches/:id/scoreBet',
   json(),
   verifyJWT,
   validatorHandler('modifyMatchFromUserParams', 'params'),

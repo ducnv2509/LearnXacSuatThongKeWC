@@ -25,7 +25,7 @@ export const userSchema = new Schema({
   },
   score: {
     type: Number,
-    default: 0,
+    default: 1000000,
   },
   selected_teams: {
     type: selected_teams

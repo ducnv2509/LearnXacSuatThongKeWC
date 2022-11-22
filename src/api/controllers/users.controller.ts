@@ -21,19 +21,25 @@ interface updated {
 
 export const modifyMatchFromUser = async (req: Request, res: Response, next: NextFunction) => {
   const { id, userId } = req.params
-  const { local_score, visitor_score } = req.body
+  const { bet } = req.body
+  let bets: { localBet: any; visitorBet: any; betAmount: any; }[] = [];
+  bet.push((e: any) => {
+    let { scoreBet } = e;
+    let { localBet, visitorBet, betAmount } = scoreBet;
+    bets.push({ localBet, visitorBet, betAmount })
+  })
   try {
     let user = await UserService.findById(userId)?.lean();
     let match = await MatchService.findById(id)?.lean();
-    if(!user || !match) {
+    if (!user || !match) {
       throw new ErrorHandler(404, 40401, 'User or match not found')
     }
     let today = new Date()
     console.log('this is log: ', typeof new Date(match.date).getTime());
-    if(today.getTime() > new Date(match.date).getTime()) {
+    if (today.getTime() > new Date(match.date).getTime()) {
       throw new ErrorHandler(423, 42301, 'Match cannot be modified')
     }
-    const userMatchUpdated = await UserMatchesService.findByUserAndIdAndUpdate(userId, id, {local_score, visitor_score})?.lean();
+    const userMatchUpdated = await UserMatchesService.findByUserAndIdAndUpdate(userId, id, {bets})?.lean();
     logger.info(`Modify match ${id} from user ${userId}`, getExtraParams(req));
     return res
       .status(200)
@@ -41,19 +47,19 @@ export const modifyMatchFromUser = async (req: Request, res: Response, next: Nex
         message: 'User match updated',
         match_id: userMatchUpdated?.match_id
       })
-  } catch(err) {
+  } catch (err) {
     return next(err);
   }
 }
 
 export const getUsersRanking = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    let users = await UserService.findAll({score: true, names: true})?.lean();
+    let users = await UserService.findAll({ score: true, names: true })?.lean();
     logger.info('Read usermatches', getExtraParams(req));
     return res
       .status(200)
       .json(users)
-  } catch(err) {
+  } catch (err) {
     return next(err);
   }
 }
@@ -68,8 +74,8 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
     } = <register>req.body;
 
     const user = await UserService.exists(document);
-    
-    if(user) {
+
+    if (user) {
       throw new ErrorHandler(400, 40003, 'User exists');
     }
 
@@ -89,7 +95,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
     await UserService.create(newUser)
 
     const matches = await MatchService.findAll()?.lean();
-    
+
     const userMatches = matches?.map((match) => {
       return {
         user_id: document,
@@ -108,22 +114,23 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
         message: 'User created',
         id: document
       })
-  } catch(err) {
+  } catch (err) {
     return next(err);
   }
 }
+
 
 export const updateUser = async (req: ICustomRequest, res: Response, next: NextFunction) => {
   try {
     const { password, champion, runner_up, third_place } = <updated>req.body
 
-    if(password) {
+    if (password) {
       await UserService.updateById(<string>req.payload?.document, password, 'password');
-    } else if(champion) {
+    } else if (champion) {
       await UserService.updateById(<string>req.payload?.document, champion, 'champion');
-    } else if(runner_up) {
+    } else if (runner_up) {
       await UserService.updateById(<string>req.payload?.document, runner_up, 'runner_up');
-    } else if(third_place) {
+    } else if (third_place) {
       await UserService.updateById(<string>req.payload?.document, third_place, 'third_place');
     } else {
       throw new ErrorHandler(500, 50002, 'Invalid user updated');
@@ -133,7 +140,7 @@ export const updateUser = async (req: ICustomRequest, res: Response, next: NextF
       .json({
         message: 'User updated'
       })
-  } catch(err) {
+  } catch (err) {
     return next(err);
   }
 }
