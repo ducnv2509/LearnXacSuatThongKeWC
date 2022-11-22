@@ -1,5 +1,31 @@
 import { Schema, Types } from 'mongoose';
 
+const scoreBetSchema = new Schema({
+  localBet: {
+    type: Number,
+    required: false
+  },
+  visitorBet: {
+    type: Number,
+    required: false
+  },
+  betAmount: {
+    type: Number,
+    required: false
+  }
+})
+
+const winBetSchema = new Schema({
+  winner: {
+    type: String,
+    required: false
+  },
+  betAmount: {
+    type: Number,
+    required: false
+  }
+})
+
 export const userMatchesSchema = new Schema({
   _id: {
     type: Types.ObjectId,
@@ -14,42 +40,16 @@ export const userMatchesSchema = new Schema({
     type: String,
     required: true,
   },
-  // local_score: {
-  //   type: Number,
-  // },
-  // visitor_score: {
-  //   type: Number,
-  // },
-  bet: [{
-
+  bets: {
     scoreBet: {
-      localBet: {
-        type: Number,
-      },
-      visitorBet: {
-        type: Number,
-      },
-      betAmount: {
-        type: Number,
-      }
+      type: scoreBetSchema,
+      required: false
     },
     winBet: {
-      localBet: {
-        type: Boolean,
-      },
-      visitorBet: {
-        type: Boolean,
-
-      },
-      tieBet: {
-        type: Boolean,
-      },
-      betAmount: {
-        type: Number,
-      }
+      type: winBetSchema,
+      required: false
     }
-
-  }]
+  }
 }, {
   collection: 'users_matches',
   versionKey: false

@@ -1,18 +1,18 @@
 import { json, Router } from 'express';
 
-import { getUsersRanking, modifyMatchFromUser, register, updateUser } from '../controllers';
+import { getUsersRanking, register, updateUser } from '../controllers';
 import { validatorHandler, verifyJWT } from '../middlewares';
 
 export const router: Router = Router();
 
-router.patch(
-  '/:userId/matches/:id/scoreBet',
-  json(),
-  verifyJWT,
-  validatorHandler('modifyMatchFromUserParams', 'params'),
-  validatorHandler('modifyMatchFromUserBody', 'body'),
-  modifyMatchFromUser
-)
+// router.patch(
+//   '/:userId/matches/:id/scoreBet',
+//   json(),
+//   verifyJWT,
+//   validatorHandler('modifyMatchFromUserParams', 'params'),
+//   validatorHandler('modifyMatchFromUserBody', 'body'),
+//   modifyMatchFromUser
+// )
 
 router.get(
   '/',

@@ -4,7 +4,7 @@ import { compareSync } from 'bcryptjs';
 import { IPayload } from '../../types';
 import { UserService } from '../../services';
 import { ErrorHandler, generateJWT, getExtraParams, logger } from '../../utils';
-import { UserMatchesService } from '../../services/userMatches.service';
+// import { UserMatchesService } from '../../services/userMatches.service';
 
 interface login {
   document: string,
@@ -15,20 +15,20 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
   let { document, password } = <login>req.body;
   try {
     let user = await UserService.findById(document)?.lean();
-    
-    if(!user) {
+
+    if (!user) {
       throw new ErrorHandler(400, 40001, 'Invalid user or password');
     }
 
-    if(!compareSync(password, user.password)) {
+    if (!compareSync(password, user.password)) {
       throw new ErrorHandler(400, 40001, 'Invalid user or password');
     }
 
     let payload: IPayload = {
       document: user._id,
     }
-    
-    const matches_results = await UserMatchesService.findAllByUser(user._id, {_id: false, user_id: false})?.lean();
+
+    // const matches_results = await UserMatchesService.findAllByUser(user._id, { _id: false, user_id: false })?.lean();
 
     const token = await generateJWT(payload);
     logger.info(`Login user ${user._id}`, getExtraParams(req));
@@ -39,14 +39,9 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
         document: user._id,
         names: user.names,
         score: user.score,
-        selected_teams: user.selected_teams,
-        matches_results: matches_results?.map((matchResult) => ({
-          _id: matchResult.match_id,
-          local_score: matchResult.local_score,
-          visitor_score: matchResult.visitor_score
-        }))
+        selected_teams: user.selected_teams
       })
-  } catch(err) {
+  } catch (err) {
     return next(err);
   }
 }
