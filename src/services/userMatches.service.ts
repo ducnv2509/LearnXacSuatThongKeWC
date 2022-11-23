@@ -103,6 +103,9 @@ export class UserMatchesService {
         value: value
       }
       user.score += (old - amount);
+      if (user.score < 0) {
+        throw new MyError("Bet failed")
+      }
       let update = { $set: { 'bets.winBet': bet } }
       if (await this.exists(user_id, match_id)) {
         return Promise.all([
@@ -157,6 +160,9 @@ export class UserMatchesService {
         visitorBet: visitor
       }
       user.score += (old - amount)
+      if (user.score < 0) {
+        throw new MyError("Bet failed")
+      }
       let update = { $set: { 'bets.scoreBet': bet } }
       if (await this.exists(user_id, match_id)) {
         return Promise.all([
@@ -252,7 +258,7 @@ export class UserMatchesService {
               diff -= Number(user_match.bets.winBet.betAmount);
             }
             console.log(result);
-            
+
           }
           console.log(diff);
           if (!user.isCalulate) {
