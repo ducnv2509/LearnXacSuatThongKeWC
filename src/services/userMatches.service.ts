@@ -239,10 +239,10 @@ export class UserMatchesService {
           }
           if (user_match.bets && user_match.bets.winBet) {
             let result = "tie"
-            if (Number(match.local_team.result) > Number(match.local_team.result)) {
+            if (Number(match.local_team.result) > Number(match.visiting_team.result)) {
               result = "local"
             }
-            if (Number(match.local_team.result) > Number(match.local_team.result)) {
+            if (Number(match.local_team.result) < Number(match.visiting_team.result)) {
               result = "visitor"
             }
             const isScoreOke = user_match.bets.winBet.value === result;
@@ -251,6 +251,8 @@ export class UserMatchesService {
             } else {
               diff -= Number(user_match.bets.winBet.betAmount);
             }
+            console.log(result);
+            
           }
           console.log(diff);
           if (!user.isCalulate) {

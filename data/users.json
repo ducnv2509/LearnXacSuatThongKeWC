@@ -1,0 +1,265 @@
+[
+    {
+        "_id": "12345678",
+        "password": "$2a$05$UnOAha.CADqH6a30RrwbqO3kzJw3xyDZ88OU2mtuqHmKVmX4QTeVm",
+        "names": "example",
+        "surnames": "example",
+        "score": 1000000,
+        "selected_teams": {
+            "champion": "1",
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "123456781",
+        "password": "$2a$05$7uoUfA4s4ppurVh4R.tMv.asimNOh/mkYtWCJ5siq/F9qkJsZWlBi",
+        "names": "example",
+        "surnames": "example",
+        "score": 1000000,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "865581392",
+        "password": "$2a$05$4UVA8e3vezyiOu8K0LS/AulKOStvEUjheE/.UWqv2RysZ3QAlgMIq",
+        "names": "Hoang",
+        "surnames": "Nguyen",
+        "score": 1000000,
+        "selected_teams": {
+            "champion": "1",
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "01231312",
+        "password": "$2a$05$IAy3XxEsrNFiS5i54fxPQuTYySfE941wKuRZbb5pWXs/xNA5l71za",
+        "names": "Đức",
+        "surnames": "Đức",
+        "score": 1000000,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "0332429178",
+        "password": "$2a$05$C55ggSaIcLlgrKyjvp2xaehddQAW7Mq42H7bMsiD8Q7ccTgAi8VJu",
+        "names": "Đức",
+        "surnames": "Nguyễn",
+        "score": 1000000,
+        "selected_teams": {
+            "champion": "24",
+            "runner_up": "3",
+            "third_place": "2"
+        }
+    },
+    {
+        "_id": "0332429177",
+        "password": "$2a$05$76tcUrce3FzayMEib1M0puePCD78lq8NdQBSakg/T48To72cPpKgC",
+        "names": "DUcnv",
+        "surnames": "duvna",
+        "score": 1000000,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "0865581392",
+        "password": "$2a$05$Yc03VJ2HyKNzLq9CINRKdeDeFKwdoAerQlybYm3sRz8jFVRNz6jt6",
+        "names": "Hoàng",
+        "surnames": "Nguyễn",
+        "score": 200,
+        "selected_teams": {
+            "champion": "2",
+            "runner_up": "1",
+            "third_place": "5"
+        },
+        "origin_score": 1000000
+    },
+    {
+        "_id": "865581393",
+        "password": "$2a$05$N6Way8HvGgice2WNF/T9NONNRp/PwYfh0LUu20PjPebDwWt.LskgW",
+        "names": "Hoàng",
+        "surnames": "Nguyễn",
+        "score": 1000000,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "0857865006",
+        "password": "$2a$05$8ieD/wLS.wGn/KvPSLaadOfR3BHOx4wYl5tVtjbsdTdFpD.l7vOt6",
+        "names": "Hùng",
+        "surnames": "Vương",
+        "score": 1600020,
+        "selected_teams": {
+            "champion": "25",
+            "runner_up": "2",
+            "third_place": "7"
+        },
+        "origin_score": 1000000
+    },
+    {
+        "_id": "0857865007",
+        "password": "$2a$05$NrY4FQS2wtjoThHNPFr6nO71eRguPfxlynbQDLhN0uy6EfUUn3teu",
+        "names": "Hoang",
+        "surnames": "example",
+        "score": 0,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "0857865008",
+        "password": "$2a$05$a42OZAw3SaAlqyL.eB5mO.7lcZW/m5QchCvkJqF/wc9k/whR1NuE2",
+        "names": "Hoang",
+        "surnames": "example",
+        "score": 0,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "0857865009",
+        "password": "$2a$05$vUWc0Lpiyd5UqYNnalDy0ORAEwhm9UCfRHOekiIP5G0OOrhIncf5W",
+        "names": "Hoang",
+        "surnames": "example",
+        "score": 1010000,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        },
+        "origin_score": 1000000
+    },
+    {
+        "_id": "0966588046",
+        "password": "$2a$05$DIXtPeXPVzdzfXGZYHC1xuPnjvV5ELBNIeMo0pYOIp2kMBoe.tbRe",
+        "names": "Bình",
+        "surnames": "Lê Thanh",
+        "score": 0,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "086558",
+        "password": "$2a$05$S6GCP2vHaJn8IdQyXPHva.QozpyWJBtIocI2yMRbc1zfTFTZd4.NS",
+        "names": "HoangNDtest",
+        "surnames": "tester",
+        "origin_score": 1000000,
+        "score": -123,
+        "selected_teams": {
+            "champion": "1",
+            "runner_up": "3",
+            "third_place": "8"
+        }
+    },
+    {
+        "_id": "0857865001",
+        "password": "$2a$05$8YlbAtQY6zRQxyPbfwuGjOjiUIxzBRdqjH73X/LlsxNTLmpQ5GMNS",
+        "names": "Hoang",
+        "surnames": "example",
+        "origin_score": 1000000,
+        "score": 0,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "0857865002",
+        "password": "$2a$05$5G7FYbUkJBuF/NkSmL7oa.RMD2NhBlqeQupiJ9ddUoAidcyc.ZClC",
+        "names": "Hoang",
+        "surnames": "example",
+        "origin_score": 1000000,
+        "score": 1000000,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "0865581",
+        "password": "$2a$05$zvO0VAAIXRyLobTyDWq7Huu/xscZdCAcXG3M6UK/NFAupSHw0p6xu",
+        "names": "HoangNDtest",
+        "surnames": "Nguyen",
+        "origin_score": 1000000,
+        "score": 0,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "08655813",
+        "password": "$2a$05$QoX3oizKwThbjh2omJzOMegfKu/nKHUzG7RArkYhOG38nJ6z2/BAe",
+        "names": "HoangNDtest",
+        "surnames": "Nguyen",
+        "origin_score": 1000000,
+        "score": 100000,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "0857865000",
+        "password": "$2a$05$oD1sUpr21s6rl.yszcmsEejzPgeZmY2PNbaOuwfpiRXIYHAUbtRF2",
+        "names": "Hùng",
+        "surnames": "Vương",
+        "origin_score": 1000000,
+        "score": 0,
+        "selected_teams": {
+            "champion": "4",
+            "runner_up": "1",
+            "third_place": "6"
+        }
+    },
+    {
+        "_id": "0365550056",
+        "password": "$2a$05$m64uEgF6NaXcVsnViDwzIONnXoEwKix15s7GJicwSTWriD3ZpHC/6",
+        "names": "hung",
+        "surnames": "Nguyen ",
+        "origin_score": 1000000,
+        "score": 1000000,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    },
+    {
+        "_id": "0915741626",
+        "password": "$2a$05$Arxg0p0shdsyisyWbxB4lOWvDtlY0X0xrcBm/dT8LcnNFK8tBZykK",
+        "names": "Hung",
+        "surnames": "Nguyen",
+        "origin_score": 1000000,
+        "score": 1000000,
+        "selected_teams": {
+            "champion": null,
+            "runner_up": null,
+            "third_place": null
+        }
+    }
+]
