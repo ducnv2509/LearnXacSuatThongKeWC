@@ -42,10 +42,8 @@ export const getUsersRanking = async (_: Request, res: Response, next: NextFunct
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const {
-      document,
-      names,
-      surnames,
-      password
+      document, names,
+      surnames, password
     } = <register>req.body;
 
     const user = await UserService.exists(document);
@@ -59,7 +57,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
       names: names,
       surnames: surnames,
       password: password,
-      score: 0,
+      score: 1000000,
       selected_teams: {
         champion: null,
         runner_up: null,

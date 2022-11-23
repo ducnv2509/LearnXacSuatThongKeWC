@@ -3,6 +3,7 @@ import { Connection, connections, Error, Model } from 'mongoose';
 import config from '../config';
 import { userMatchesSchema } from '../schemas';
 import { IMatchResult } from '../types/IUser';
+import { MyError } from '../utils/error';
 import { MatchService } from './match.service';
 import { UserService } from './user.service';
 
@@ -87,7 +88,7 @@ export class UserMatchesService {
       ])
 
       if (match.date.getTime() < new Date().getTime()) {
-        throw new Error("Bet failed")
+        throw new MyError("Bet failed")
       }
 
       let old = 0
@@ -140,7 +141,7 @@ export class UserMatchesService {
       ])
 
       if (match.date.getTime() < new Date().getTime()) {
-        throw new Error("Bet failed")
+        throw new MyError("Bet failed")
       }
 
       let old = 0
@@ -155,7 +156,7 @@ export class UserMatchesService {
         localBet: local,
         visitorBet: visitor
       }
-      user.score += (old - amount)    
+      user.score += (old - amount)
       let update = { $set: { 'bets.scoreBet': bet } }
       if (await this.exists(user_id, match_id)) {
         return Promise.all([
@@ -252,15 +253,12 @@ export class UserMatchesService {
             }
           }
           console.log(diff);
-
-
           if (!user.isCalulate) {
             user.score = user.origin_score + diff;
             user.isCalulate = true;
           } else { user.score += diff; }
           await user.save();
           console.log(user.score);
-
         }
 
       }
