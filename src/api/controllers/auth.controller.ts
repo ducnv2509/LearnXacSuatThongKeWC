@@ -3,8 +3,7 @@ import { compareSync } from 'bcryptjs';
 
 import { IPayload } from '../../types';
 import { UserService } from '../../services';
-import { ErrorHandler, generateJWT, getExtraParams, logger } from '../../utils';
-// import { UserMatchesService } from '../../services/userMatches.service';
+import { ErrorHandler, generateJWT } from '../../utils';
 
 interface login {
   document: string,
@@ -28,10 +27,8 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
       document: user._id,
     }
 
-    // const matches_results = await UserMatchesService.findAllByUser(user._id, { _id: false, user_id: false })?.lean();
-
     const token = await generateJWT(payload);
-    logger.info(`Login user ${user._id}`, getExtraParams(req));
+    // logger.info(`Login user ${user._id}`, getExtraParams(req));
     return res
       .status(200)
       .json({

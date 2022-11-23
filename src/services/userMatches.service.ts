@@ -37,6 +37,19 @@ export class UserMatchesService {
 
   constructor() { }
 
+  static findByUserAndMatch(
+    user_id: string, match_id: string
+  ) {
+    this.createModel();
+    if (this.model) {
+      return this.model.findOne({
+        match_id: match_id,
+        user_id: user_id
+      });
+    }
+    return;
+  }
+
   static findAllByUser(user_id: string, projection = {}) {
     this.createModel();
     if (this.model) {
@@ -65,25 +78,50 @@ export class UserMatchesService {
     user_id: string, match_id: string,
     value: string, amount: number
   ) {
+    this.createModel();
     if (this.model) {
+      const [user, match, user_match]: [any, any, any] = await Promise.all([
+        UserService.findById(user_id),
+        MatchService.findById(match_id),
+        this.findByUserAndMatch(user_id, match_id)
+      ])
+
+      if (match.date.getTime() < new Date().getTime()) {
+        throw new Error("Bet failed")
+      }
+
+      let old = 0
+      if (user_match && user_match.bets) {
+        if (user_match.bets.winBet) {
+          old += user_match.bets.winBet.betAmount;
+        }
+      }
+
       const bet: WinBet = {
         betAmount: amount,
         value: value
       }
+      user.score += (old - amount);
       let update = { $set: { 'bets.winBet': bet } }
       if (await this.exists(user_id, match_id)) {
-        return this.model.findOneAndUpdate(
-          {
-            user_id: user_id,
-            match_id: match_id
-          }, update
-        );
+        return Promise.all([
+          this.model.findOneAndUpdate(
+            {
+              user_id: user_id,
+              match_id: match_id
+            }, update
+          ),
+          user.save()
+        ])
       } else {
-        return this.model.create({
-          user_id: user_id,
-          match_id: match_id,
-          bets: { winBet: bet }
-        })
+        return Promise.all([
+          this.model.create({
+            user_id: user_id,
+            match_id: match_id,
+            bets: { winBet: bet }
+          }),
+          user.save()
+        ])
       }
     }
     return;
@@ -93,26 +131,51 @@ export class UserMatchesService {
     user_id: string, match_id: string,
     local: number, visitor: number, amount: number
   ) {
+    this.createModel();
     if (this.model) {
+      const [user, match, user_match]: [any, any, any] = await Promise.all([
+        UserService.findById(user_id),
+        MatchService.findById(match_id),
+        this.findByUserAndMatch(user_id, match_id)
+      ])
+
+      if (match.date.getTime() < new Date().getTime()) {
+        throw new Error("Bet failed")
+      }
+
+      let old = 0
+      if (user_match && user_match.bets) {
+        if (user_match.bets.scoreBet) {
+          old += user_match.bets.scoreBet.betAmount;
+        }
+      }
+
       const bet: ScoreBet = {
         betAmount: amount,
         localBet: local,
         visitorBet: visitor
       }
+      user.score += (old - amount)    
       let update = { $set: { 'bets.scoreBet': bet } }
       if (await this.exists(user_id, match_id)) {
-        return this.model.findOneAndUpdate(
-          {
-            user_id: user_id,
-            match_id: match_id
-          }, update
-        );
+        return Promise.all([
+          this.model.findOneAndUpdate(
+            {
+              user_id: user_id,
+              match_id: match_id
+            }, update
+          ),
+          user.save()
+        ]);
       } else {
-        return this.model.create({
-          user_id: user_id,
-          match_id: match_id,
-          bets: { scoreBet: bet }
-        })
+        return Promise.all([
+          this.model.create({
+            user_id: user_id,
+            match_id: match_id,
+            bets: { scoreBet: bet }
+          }),
+          user.save()
+        ])
       }
     }
     return;
@@ -147,11 +210,9 @@ export class UserMatchesService {
           users[user_id].isCalulate = false;
         } else {
           console.log("abc");
-
         }
         if (!matchs[match_id]) {
           matchs[match_id] = await MatchService.findById(match_id);
-          // users[user_id].isCalulate = false;
         }
         const user: any = users[user_id];
         const match: any = matchs[match_id];
@@ -165,17 +226,17 @@ export class UserMatchesService {
               match.visiting_team.result === user_match.bets.scoreBet.visitorBet
             if (isScoreOke) {
               diff = Number(user_match.bets.scoreBet.betAmount) * rateScore;
-              
+
             } else {
               console.log("zzzz");
-              
+
               diff = -Number(user_match.bets.scoreBet.betAmount);
             }
             console.log(match.local_team.result, user_match.bets.scoreBet.localBet);
-            console.log( match.visiting_team.result,user_match.bets.scoreBet.visitorBet)
-            
+            console.log(match.visiting_team.result, user_match.bets.scoreBet.visitorBet)
+
           }
-          if (user_match.bets && user_match.bets.scoreBet) {
+          if (user_match.bets && user_match.bets.winBet) {
             let result = "tie"
             if (Number(match.local_team.result) > Number(match.local_team.result)) {
               result = "local"
@@ -191,7 +252,7 @@ export class UserMatchesService {
             }
           }
           console.log(diff);
-          
+
 
           if (!user.isCalulate) {
             user.score = user.origin_score + diff;
@@ -199,7 +260,7 @@ export class UserMatchesService {
           } else { user.score += diff; }
           await user.save();
           console.log(user.score);
-          
+
         }
 
       }

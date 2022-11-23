@@ -31,9 +31,9 @@ export const betWinner = async (req: ICustomRequest, res: Response, next: NextFu
 }
 
 export const betScore = async (req: ICustomRequest, res: Response, next: NextFunction) => {
-    try {
+    try {        
         const user_id = <string>req.payload?.document;
-        const betData = <BetScoreBody>req.body;
+        const betData = <BetScoreBody>req.body;        
         await UserMatchesService.betScore(
             user_id, betData.match_id, betData.localBet,
             betData.visitorBet, betData.betAmount
