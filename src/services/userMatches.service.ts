@@ -12,13 +12,11 @@ export interface WinBet {
   betAmount: number | null
 }
 
-
 export interface ScoreBet {
   localBet: number | null,
   visitorBet: number | null,
   betAmount: number | null
 }
-
 
 export interface BetData {
   user_id: string,
@@ -211,20 +209,14 @@ export class UserMatchesService {
         const match_id = user_match.match_id;
 
         if (!users[user_id]) {
-          console.log("aaa", 'user');
-
           users[user_id] = await UserService.findById(user_id);
-          users[user_id].isCalulate = false;
-        } else {
-          console.log("abc");
+          users[user_id].score = users[user_id].origin_score
         }
         if (!matchs[match_id]) {
           matchs[match_id] = await MatchService.findById(match_id);
         }
         const user: any = users[user_id];
         const match: any = matchs[match_id];
-        console.log(JSON.stringify(match));
-
 
         if (match && user && match.has_played === true) {
           if (user_match.bets && user_match.bets.scoreBet) {
@@ -233,15 +225,9 @@ export class UserMatchesService {
               match.visiting_team.result === user_match.bets.scoreBet.visitorBet
             if (isScoreOke) {
               diff = Number(user_match.bets.scoreBet.betAmount) * rateScore;
-
             } else {
-              console.log("zzzz");
-
               diff = -Number(user_match.bets.scoreBet.betAmount);
             }
-            console.log(match.local_team.result, user_match.bets.scoreBet.localBet);
-            console.log(match.visiting_team.result, user_match.bets.scoreBet.visitorBet)
-
           }
           if (user_match.bets && user_match.bets.winBet) {
             let result = "tie"
@@ -257,18 +243,26 @@ export class UserMatchesService {
             } else {
               diff -= Number(user_match.bets.winBet.betAmount);
             }
-            console.log(result);
 
           }
-          console.log(diff);
-          if (!user.isCalulate) {
-            user.score = user.origin_score + diff;
-            user.isCalulate = true;
-          } else { user.score += diff; }
-          await user.save();
-          console.log(user.score);
+          user.score += diff
         }
-
+        if (match && user && match.has_played === false) {
+          if (user_match.bets && user_match.bets.winBet) {
+            if (user_match.bets.winBet.betAmount) {
+              user.score -= user_match.bets.winBet.betAmount
+            }
+          }
+          if (user_match.bets && user_match.bets.scoreBet) {
+            if (user_match.bets.scoreBet.betAmount) {
+              user.score -= user_match.bets.scoreBet.betAmount
+            }
+          }
+        }
+      }
+      for (const key in users) {
+        const element = users[key];
+        await element.save()
       }
     }
   }
