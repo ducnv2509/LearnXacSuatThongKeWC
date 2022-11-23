@@ -201,7 +201,7 @@ export class UserMatchesService {
   static async calculatePoint() {
     this.createModel()
     const users: any = {}; const matchs: any = {}
-    const rateScore = 2; const rateWinner = 1.5;
+    const rateScore = 1; const rateWinner = 0.5;
     if (this.model) {
       const user_matchs: BetData[] = await this.model.find()
 
