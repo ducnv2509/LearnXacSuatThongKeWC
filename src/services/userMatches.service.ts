@@ -243,7 +243,6 @@ export class UserMatchesService {
             } else {
               diff -= Number(user_match.bets.winBet.betAmount);
             }
-
           }
           user.score += diff
         }

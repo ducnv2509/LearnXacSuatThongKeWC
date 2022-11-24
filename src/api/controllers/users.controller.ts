@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-
-import { UserMatchesService, UserService /*,UserMatchesService, MatchService */ } from '../../services';
+import { UserMatchesService, UserService } from '../../services';
 import { ICustomRequest } from '../../types';
-import { getExtraParams, logger, ErrorHandler } from '../../utils';
+import { ErrorHandler } from '../../utils';
 
 interface register {
   document: string,
@@ -23,20 +22,14 @@ export const calculatePoint = async (_: Request, res: Response, next: NextFuncti
     await UserMatchesService.calculatePoint();
     return res.status(200)
       .json({ message: 'point calculated' })
-  } catch (err) {
-    return next(err);
-  }
+  } catch (err) { return next(err); }
 }
 
 export const getUsersRanking = async (_: Request, res: Response, next: NextFunction) => {
   try {
     let users = await UserService.findAll({ score: true, names: true })?.lean();
-    return res
-      .status(200)
-      .json(users)
-  } catch (err) {
-    return next(err);
-  }
+    return res.status(200).json(users)
+  } catch (err) { return next(err); }
 }
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
@@ -66,38 +59,11 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
     }
 
     await UserService.create(newUser)
-
-    // const matches = await MatchService.findAll()?.lean();
-
-    // const userMatches = matches?.map((match) => {
-    //   return {
-    //     user_id: document,
-    //     match_id: match._id,
-    //     bets: {
-    //       winBet: {
-    //         winner: null,
-    //         betAmount: null
-    //       },
-    //       scoreBet: {
-    //         localBet: null,
-    //         visitorBet: null,
-    //         betAmount: null
-    //       }
-    //     }
-    //   }
-    // })
-    // await UserMatchesService.createAll(<BetData[]>userMatches)
-
-    logger.info(`Created user ${document}`, getExtraParams(req));
-    return res
-      .status(201)
-      .json({
-        message: 'User created',
-        id: document
-      })
-  } catch (err) {
-    return next(err);
-  }
+    return res.status(201).json({
+      message: 'User created',
+      id: document
+    })
+  } catch (err) { return next(err); }
 }
 
 

@@ -30,6 +30,7 @@ export class MatchService {
   }
 
   static updateResult(id: string, localScore: number, visitingScore: number) {
+    this.createModel();
     if (this.model) {
       let update = {
         $set: {
