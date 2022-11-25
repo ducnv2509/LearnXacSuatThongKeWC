@@ -11,15 +11,15 @@ export async function writeToFile(result: any) {
 
     const sheet = workbook.getWorksheet("Sheet1")
 
-    sheet.getCell(2, 3).value = result.metadata.generatedTime
-    sheet.getCell(3, 3).value = result.metadata.from
-    sheet.getCell(4, 3).value = result.metadata.to
+    sheet.getCell(2, 3).value = "Thời gian tạo: " + result.metadata.generatedTime
+    sheet.getCell(3, 3).value = "Thời gian bắt đầu: " + result.metadata.from
+    sheet.getCell(4, 3).value = "Thời gian kết thúc: " + result.metadata.to
 
     let row = 8;
     let count = 1;
 
     for (const item of result.data) {
-        sheet.getCell(row, 2).value = count ++
+        sheet.getCell(row, 2).value = count++
         sheet.getCell(row, 3).value = item.names
         sheet.getCell(row, 4).value = item.currentScore
 
