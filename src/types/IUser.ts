@@ -12,10 +12,25 @@ export interface IUser {
   }
 }
 
+interface IScoreBet {
+  localBet: number,
+  visitorBet: number,
+  betAmount: number
+}
+
+interface IWinBet {
+  value: string,
+  betAmount: number,
+}
+
+interface IBet {
+  scoreBet?: IScoreBet,
+  winBet?: IWinBet
+}
+
 export interface IMatchResult {
   _id: Types.ObjectId,
   user_id: string,
   match_id: string,
-  local_score: number,
-  visitor_score: number
+  bets: IBet
 }

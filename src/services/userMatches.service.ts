@@ -1,9 +1,10 @@
 import { Connection, connections, Error, Model } from 'mongoose';
-
 import config from '../config';
 import { userMatchesSchema } from '../schemas';
-import { IMatchResult } from '../types/IUser';
+import { IMatch } from '../types';
+import { IMatchResult, IUser } from '../types/IUser';
 import { MyError } from '../utils/error';
+import { writeToFile } from '../utils/excel';
 import { MatchService } from './match.service';
 import { UserService } from './user.service';
 
@@ -201,7 +202,7 @@ export class UserMatchesService {
     const users: any = {}; const matchs: any = {}
     const rateScore = 1; const rateWinner = 0.5;
     if (this.model) {
-      const user_matchs: BetData[] = await this.model.find()
+      const user_matchs = await this.model.find()
 
       for (let user_match of user_matchs) {
         let diff = 0;
@@ -215,8 +216,8 @@ export class UserMatchesService {
         if (!matchs[match_id]) {
           matchs[match_id] = await MatchService.findById(match_id);
         }
-        const user: any = users[user_id];
-        const match: any = matchs[match_id];
+        const user: IUser = users[user_id];
+        const match: IMatch = matchs[match_id];
 
         if (match && user && match.has_played === true) {
           if (user_match.bets && user_match.bets.scoreBet) {
@@ -264,6 +265,78 @@ export class UserMatchesService {
         await element.save()
       }
     }
+  }
+
+  static async generateExcel(now: Date) {
+    this.createModel()
+    if (this.model) {
+      const startDate = new Date(
+        now.getFullYear(), now.getMonth(),
+        now.getDate() - 1, 15
+      )
+      const endDate = new Date(
+        now.getFullYear(), now.getMonth(),
+        now.getDate(), 15
+      )
+      const matches = await MatchService.findAll();
+
+      if (!matches) return;
+
+      const newMatches = matches.filter(match => {
+        return match.date.getTime() >= startDate.getTime()
+          && match.date.getTime() <= endDate.getTime()
+      });
+      const matchIds = newMatches?.map(v => v._id);
+      const bets = await this.model.find({ match_id: { $in: matchIds } })
+      const users = await UserService.findAll()
+      if (!users) return;
+      const changes = []
+      for (const user of users) {
+        let changed = 0;
+        const newBets = bets.filter(v => v.user_id === user._id)
+        for (const bet of newBets) {
+          const match = matches.find(v => v._id === bet.match_id);
+          if (!match) return;
+          const scoreLocal = match.local_team.result;
+          const scoreVisitor = match.visiting_team.result;
+          let winner = "tie"
+          if (scoreLocal > scoreVisitor) winner = "local"
+          if (scoreLocal < scoreVisitor) winner = "visitor"
+          if (bet.bets && bet.bets.winBet && bet.bets.winBet.betAmount) {
+            if (winner === bet.bets.winBet.value) {
+              changed += bet.bets.winBet.betAmount * 0.5
+            } else {
+              changed -= bet.bets.winBet.betAmount
+            }
+          }
+          if (bet.bets && bet.bets.scoreBet && bet.bets.scoreBet.betAmount) {
+            if (scoreLocal === bet.bets.scoreBet.localBet && scoreVisitor === bet.bets.scoreBet.visitorBet) {
+              changed += bet.bets.scoreBet.betAmount * 1
+            } else {
+              changed -= bet.bets.scoreBet.betAmount
+            }
+          }
+        }
+        const item = {
+          names: user.names,
+          surnames: user.surnames,
+          phone: user._id,
+          currentScore: user.score,
+          changed: changed
+        }
+        changes.push(item)
+      }
+      changes.sort((a, b) => b.changed - a.changed)
+      const result = {
+        metadata: {
+          generatedTime: now.toLocaleString(),
+          from: startDate.toLocaleString(),
+          to: endDate.toLocaleString()
+        },
+        data: changes
+      }
+      await writeToFile(result)
+    } else return;
   }
 
   private static validateConnection() {
