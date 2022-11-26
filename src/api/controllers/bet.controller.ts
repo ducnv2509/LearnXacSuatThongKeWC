@@ -6,15 +6,15 @@ import fs from "fs";
 
 interface BetWinnerBody {
     match_id: string,
-    value: string,
+    value?: string,
     betAmount: number
 
 }
 
 interface BetScoreBody {
     match_id: string,
-    localBet: number,
-    visitorBet: number,
+    localBet?: number,
+    visitorBet?: number,
     betAmount: number
 }
 
@@ -22,6 +22,9 @@ export const betWinner = async (req: ICustomRequest, res: Response, next: NextFu
     try {
         const user_id = <string>req.payload?.document;
         const betData = <BetWinnerBody>req.body;
+        if (!betData.value || betData.value.trim() === "") {
+            return res.status(400).json({ message: 'Bet failed' })
+        }
         await UserMatchesService.betWinner(
             user_id, betData.match_id
             , betData.value, betData.betAmount
@@ -36,6 +39,9 @@ export const betScore = async (req: ICustomRequest, res: Response, next: NextFun
     try {
         const user_id = <string>req.payload?.document;
         const betData = <BetScoreBody>req.body;
+        if (!betData.localBet || !betData.visitorBet) {
+            return res.status(400).json({ message: 'Bet failed' })
+        }
         await UserMatchesService.betScore(
             user_id, betData.match_id, betData.localBet,
             betData.visitorBet, betData.betAmount
