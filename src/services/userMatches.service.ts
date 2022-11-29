@@ -50,10 +50,16 @@ export class UserMatchesService {
     return;
   }
 
-  static findAllByUser(user_id: string, projection = {}) {
+  static async findAllByUser(user_id: string) {
     this.createModel();
     if (this.model) {
-      return this.model.find({ user_id: user_id }, projection);
+      const bets = await this.model.find({ user_id: user_id });
+      const result = []
+      for (const bet of bets) {
+        const match = await MatchService.findById(bet.match_id)
+        result.push({ ...bet.toJSON(), match: match?.toJSON() })
+      }
+      return result;
     }
     return;
   }
