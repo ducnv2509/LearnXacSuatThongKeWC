@@ -27,8 +27,16 @@ export const calculatePoint = async (_: Request, res: Response, next: NextFuncti
 
 export const getUsersRanking = async (_: Request, res: Response, next: NextFunction) => {
   try {
-    let users = await UserService.findAll({ score: true, names: true })?.lean();
-    return res.status(200).json(users)
+    let users = await UserService.findAll({ score: true, names: true });
+    if (!users) return;
+    const result = []
+    for (const user of users) {
+      const bets = await UserMatchesService.findAllByUser(user._id);
+      const newUser: any = user.toJSON();
+      newUser["bets"] = bets
+      result.push(newUser)
+    }
+    return res.status(200).json(result)
   } catch (err) { return next(err); }
 }
 
