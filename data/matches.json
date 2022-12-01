@@ -6,13 +6,13 @@
             "_id": "30",
             "name": "Qatar",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/h0FNA5YxLzWChHS5K0o4gw_48x48.png",
-            "result": 0
+            "result": NumberInt(0)
         },
         "visiting_team": {
             "_id": "29",
             "name": "Ecuador",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/AKqvkBpIyr-iLOK7Ig7-yQ_48x48.png",
-            "result": 2
+            "result": NumberInt(2)
         },
         "date": "2022-11-20T16:00:00.000Z",
         "has_played": true
@@ -24,16 +24,16 @@
             "_id": "16",
             "name": "Senegal",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/zw3ac5sIbH4DS6zP5auOkQ_48x48.png",
-            "result": null
+            "result": 0.0
         },
         "visiting_team": {
             "_id": "7",
             "name": "Hà Lan",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/8GEqzfLegwFFpe6X2BODTg_48x48.png",
-            "result": null
+            "result": 2.0
         },
         "date": "2022-11-21T16:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "3",
@@ -42,16 +42,16 @@
             "_id": "30",
             "name": "Qatar",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/h0FNA5YxLzWChHS5K0o4gw_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "visiting_team": {
             "_id": "16",
             "name": "Senegal",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/zw3ac5sIbH4DS6zP5auOkQ_48x48.png",
-            "result": null
+            "result": NumberInt(3)
         },
         "date": "2022-11-25T13:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "4",
@@ -60,16 +60,16 @@
             "_id": "7",
             "name": "Hà Lan",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/8GEqzfLegwFFpe6X2BODTg_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "visiting_team": {
             "_id": "29",
             "name": "Ecuador",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/AKqvkBpIyr-iLOK7Ig7-yQ_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "date": "2022-11-25T16:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "5",
@@ -78,16 +78,16 @@
             "_id": "29",
             "name": "Ecuador",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/AKqvkBpIyr-iLOK7Ig7-yQ_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "visiting_team": {
             "_id": "16",
             "name": "Senegal",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/zw3ac5sIbH4DS6zP5auOkQ_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "date": "2022-11-29T15:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "6",
@@ -96,16 +96,16 @@
             "_id": "7",
             "name": "Hà Lan",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/8GEqzfLegwFFpe6X2BODTg_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "visiting_team": {
             "_id": "30",
             "name": "Qatar",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/h0FNA5YxLzWChHS5K0o4gw_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-29T15:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "7",
@@ -114,16 +114,16 @@
             "_id": "5",
             "name": "Anh",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/DTqIL8Ba3KIuxGkpXw5ayA_48x48.png",
-            "result": null
+            "result": 6.0
         },
         "visiting_team": {
             "_id": "18",
             "name": "Iran",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1oq8Fy7ETpBpZNaCA22ArQ_48x48.png",
-            "result": null
+            "result": 2.0
         },
         "date": "2022-11-21T13:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "8",
@@ -132,16 +132,16 @@
             "_id": "15",
             "name": "Hoa Kỳ",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/wj9uZvn_vZrelLFGH8fnPA_48x48.png",
-            "result": null
+            "result": 1.0
         },
         "visiting_team": {
             "_id": "17",
             "name": "Xứ Wales",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1JjnDm6Es30LryHzbudyEw_48x48.png",
-            "result": null
+            "result": 1.0
         },
         "date": "2022-11-21T19:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "9",
@@ -150,16 +150,16 @@
             "_id": "17",
             "name": "Xứ Wales",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1JjnDm6Es30LryHzbudyEw_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "visiting_team": {
             "_id": "18",
             "name": "Iran",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1oq8Fy7ETpBpZNaCA22ArQ_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "date": "2022-11-25T10:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "10",
@@ -168,16 +168,16 @@
             "_id": "5",
             "name": "Anh",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/DTqIL8Ba3KIuxGkpXw5ayA_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "visiting_team": {
             "_id": "15",
             "name": "Hoa Kỳ",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/wj9uZvn_vZrelLFGH8fnPA_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-25T19:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "11",
@@ -186,16 +186,16 @@
             "_id": "18",
             "name": "Iran",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1oq8Fy7ETpBpZNaCA22ArQ_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "visiting_team": {
             "_id": "15",
             "name": "Hoa Kỳ",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/wj9uZvn_vZrelLFGH8fnPA_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "date": "2022-11-29T19:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "12",
@@ -204,16 +204,16 @@
             "_id": "17",
             "name": "Xứ Wales",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1JjnDm6Es30LryHzbudyEw_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "visiting_team": {
             "_id": "5",
             "name": "Anh",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/DTqIL8Ba3KIuxGkpXw5ayA_48x48.png",
-            "result": null
+            "result": NumberInt(3)
         },
-        "date": "2022-11-25T10:00:00.000Z",
-        "has_played": false
+        "date": "2022-11-29T19:00:00.000Z",
+        "has_played": true
     },
     {
         "_id": "13",
@@ -222,16 +222,16 @@
             "_id": "3",
             "name": "Argentina",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1xBWyjjkA6vEWopPK3lIPA_48x48.png",
-            "result": null
+            "result": 1.0
         },
         "visiting_team": {
             "_id": "31",
             "name": "Ả-rập-xê-út",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/QoAJxO46fHid3_T-7nRZ0Q_48x48.png",
-            "result": null
+            "result": 2.0
         },
         "date": "2022-11-22T10:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "14",
@@ -240,16 +240,16 @@
             "_id": "12",
             "name": "Mê-hi-cô",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/yJF9xqmUGenD8108FJbg9A_48x48.png",
-            "result": null
+            "result": 0.0
         },
         "visiting_team": {
             "_id": "22",
             "name": "Ba Lan",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/yTS_Piy3M1wUBnqU0n5aAw_48x48.png",
-            "result": null
+            "result": 0.0
         },
         "date": "2022-11-22T16:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "15",
@@ -258,16 +258,16 @@
             "_id": "22",
             "name": "Ba Lan",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/yTS_Piy3M1wUBnqU0n5aAw_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "visiting_team": {
             "_id": "31",
             "name": "Ả-rập-xê-út",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/QoAJxO46fHid3_T-7nRZ0Q_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-26T13:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "16",
@@ -276,16 +276,16 @@
             "_id": "3",
             "name": "Argentina",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1xBWyjjkA6vEWopPK3lIPA_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "visiting_team": {
             "_id": "12",
             "name": "Mê-hi-cô",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/yJF9xqmUGenD8108FJbg9A_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-26T19:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "17",
@@ -330,16 +330,16 @@
             "_id": "9",
             "name": "Đan Mạch",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/LaOvu-pyRqRso6uzff55XA_48x48.png",
-            "result": null
+            "result": 0.0
         },
         "visiting_team": {
             "_id": "24",
             "name": "Tu-ni-si-a",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/Xs33c9XVUJBX0IkeFn_bIw_48x48.png",
-            "result": null
+            "result": 0.0
         },
         "date": "2022-11-22T15:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "20",
@@ -348,16 +348,16 @@
             "_id": "4",
             "name": "Pháp",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/z3JEQB3coEAGLCJBEUzQ2A_48x48.png",
-            "result": null
+            "result": 4.0
         },
         "visiting_team": {
             "_id": "26",
             "name": "Australia",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/jSgw5z0EPOLzdUi-Aomq7Q_48x48.png",
-            "result": null
+            "result": 1.0
         },
         "date": "2022-11-22T19:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "21",
@@ -366,16 +366,16 @@
             "_id": "24",
             "name": "Tu-ni-si-a",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/Xs33c9XVUJBX0IkeFn_bIw_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "visiting_team": {
             "_id": "26",
             "name": "Australia",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/jSgw5z0EPOLzdUi-Aomq7Q_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "date": "2022-11-26T10:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "22",
@@ -384,16 +384,16 @@
             "_id": "4",
             "name": "Pháp",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/z3JEQB3coEAGLCJBEUzQ2A_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "visiting_team": {
             "_id": "9",
             "name": "Đan Mạch",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/LaOvu-pyRqRso6uzff55XA_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "date": "2022-11-26T16:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "23",
@@ -438,16 +438,16 @@
             "_id": "10",
             "name": "Đức",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/h1FhPLmDg9AHXzhygqvVPg_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "visiting_team": {
             "_id": "21",
             "name": "Nhật Bản",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/by4OltvtZz7taxuQtkiP3A_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "date": "2022-11-23T13:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "26",
@@ -456,16 +456,16 @@
             "_id": "6",
             "name": "Tây Ban Nha",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/5hLkf7KFHhmpaiOJQv8LmA_48x48.png",
-            "result": null
+            "result": NumberInt(7)
         },
         "visiting_team": {
             "_id": "25",
             "name": "Costa Rica",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/ixZiM5pj2IvvYc15k-zfeQ_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-23T16:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "27",
@@ -474,16 +474,16 @@
             "_id": "21",
             "name": "Nhật Bản",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/by4OltvtZz7taxuQtkiP3A_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "visiting_team": {
             "_id": "25",
             "name": "Costa Rica",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/ixZiM5pj2IvvYc15k-zfeQ_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "date": "2022-11-27T10:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "28",
@@ -492,16 +492,16 @@
             "_id": "6",
             "name": "Tây Ban Nha",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/5hLkf7KFHhmpaiOJQv8LmA_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "visiting_team": {
             "_id": "10",
             "name": "Đức",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/h1FhPLmDg9AHXzhygqvVPg_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "date": "2022-11-27T19:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "29",
@@ -546,16 +546,16 @@
             "_id": "20",
             "name": "Ma-rốc",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/I3gt2Ew39ux3GGdZ-4JE3g_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "visiting_team": {
             "_id": "11",
             "name": "Croatia",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/9toerdOg8xW4CRhDaZxsyw_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-23T10:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "32",
@@ -564,16 +564,16 @@
             "_id": "2",
             "name": "Bỉ",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/6SF7yEoB60bU5knw-M7R5Q_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "visiting_team": {
             "_id": "27",
             "name": "Canada",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/H23oIEP6qK-zNc3O8abnIA_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-23T19:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "33",
@@ -582,16 +582,16 @@
             "_id": "2",
             "name": "Bỉ",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/6SF7yEoB60bU5knw-M7R5Q_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "visiting_team": {
             "_id": "20",
             "name": "Ma-rốc",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/I3gt2Ew39ux3GGdZ-4JE3g_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "date": "2022-11-27T13:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "34",
@@ -600,16 +600,16 @@
             "_id": "11",
             "name": "Croatia",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/9toerdOg8xW4CRhDaZxsyw_48x48.png",
-            "result": null
+            "result": NumberInt(3)
         },
         "visiting_team": {
             "_id": "27",
             "name": "Canada",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/H23oIEP6qK-zNc3O8abnIA_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "date": "2022-11-27T16:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "35",
@@ -654,16 +654,16 @@
             "_id": "14",
             "name": "Thụy Sĩ",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1hy9ek4dOIffYULM6k1fqg_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "visiting_team": {
             "_id": "28",
             "name": "Ca-ma-run",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/fmHyTSbJ-cYbY6WJzvqaZQ_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-24T10:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "38",
@@ -672,16 +672,16 @@
             "_id": "1",
             "name": "Bra-xin",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/zKLzoJVYz0bb6oAnPUdwWQ_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "visiting_team": {
             "_id": "19",
             "name": "Serbia",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/xyh1vmZ-xJH2iJCKjqS1Ow_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-24T19:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "39",
@@ -690,16 +690,16 @@
             "_id": "28",
             "name": "Ca-ma-run",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/fmHyTSbJ-cYbY6WJzvqaZQ_48x48.png",
-            "result": null
+            "result": NumberInt(3)
         },
         "visiting_team": {
             "_id": "19",
             "name": "Serbia",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/xyh1vmZ-xJH2iJCKjqS1Ow_48x48.png",
-            "result": null
+            "result": NumberInt(3)
         },
         "date": "2022-11-28T10:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "40",
@@ -708,16 +708,16 @@
             "_id": "1",
             "name": "Bra-xin",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/zKLzoJVYz0bb6oAnPUdwWQ_48x48.png",
-            "result": null
+            "result": NumberInt(1)
         },
         "visiting_team": {
             "_id": "14",
             "name": "Thụy Sĩ",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1hy9ek4dOIffYULM6k1fqg_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-28T16:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "41",
@@ -762,16 +762,16 @@
             "_id": "13",
             "name": "Uruguay",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/KnSUdQWiGRoy89q4x85IgA_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "visiting_team": {
             "_id": "23",
             "name": "Hàn Quốc",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/Uu5pwNmMHGd5bCooKrS3Lw_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-24T13:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "44",
@@ -780,16 +780,16 @@
             "_id": "8",
             "name": "Bồ Đào Nha",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/HJ3_2c4w791nZJj7n-Lj3Q_48x48.png",
-            "result": null
+            "result": NumberInt(3)
         },
         "visiting_team": {
             "_id": "32",
             "name": "Ghana",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/VJQ1emg0TOubjGnap4vWuw_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "date": "2022-11-24T16:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "45",
@@ -798,16 +798,16 @@
             "_id": "23",
             "name": "Hàn Quốc",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/Uu5pwNmMHGd5bCooKrS3Lw_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "visiting_team": {
             "_id": "32",
             "name": "Ghana",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/VJQ1emg0TOubjGnap4vWuw_48x48.png",
-            "result": null
+            "result": NumberInt(3)
         },
         "date": "2022-11-28T13:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "46",
@@ -816,16 +816,16 @@
             "_id": "8",
             "name": "Bồ Đào Nha",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/HJ3_2c4w791nZJj7n-Lj3Q_48x48.png",
-            "result": null
+            "result": NumberInt(2)
         },
         "visiting_team": {
             "_id": "13",
             "name": "Uruguay",
             "image": "https://ssl.gstatic.com/onebox/media/sports/logos/KnSUdQWiGRoy89q4x85IgA_48x48.png",
-            "result": null
+            "result": NumberInt(0)
         },
         "date": "2022-11-28T19:00:00.000Z",
-        "has_played": false
+        "has_played": true
     },
     {
         "_id": "47",
@@ -865,11 +865,17 @@
     },
     {
         "_id": "49",
-        "group": "Round of 16",
+        "group": "ROUND_OF_16",
         "local_team": {
+            "_id": "7",
+            "name": "Hà Lan",
+            "image": "https://ssl.gstatic.com/onebox/media/sports/logos/8GEqzfLegwFFpe6X2BODTg_48x48.png",
             "result": null
         },
         "visiting_team": {
+            "_id": "15",
+            "name": "Hoa Kỳ",
+            "image": "https://ssl.gstatic.com/onebox/media/sports/logos/wj9uZvn_vZrelLFGH8fnPA_48x48.png",
             "result": null
         },
         "date": "2022-12-03T15:00:00.000Z",
@@ -877,11 +883,17 @@
     },
     {
         "_id": "50",
-        "group": "Round of 16",
+        "group": "ROUND_OF_16",
         "local_team": {
+            "_id": "3",
+            "name": "Argentina",
+            "image": "https://ssl.gstatic.com/onebox/media/sports/logos/1xBWyjjkA6vEWopPK3lIPA_48x48.png",
             "result": null
         },
         "visiting_team": {
+            "_id": "26",
+            "name": "Australia",
+            "image": "https://ssl.gstatic.com/onebox/media/sports/logos/jSgw5z0EPOLzdUi-Aomq7Q_48x48.png",
             "result": null
         },
         "date": "2022-12-03T19:00:00.000Z",
@@ -889,11 +901,17 @@
     },
     {
         "_id": "51",
-        "group": "Round of 16",
+        "group": "ROUND_OF_16",
         "local_team": {
+            "_id": "4",
+            "name": "Pháp",
+            "image": "https://ssl.gstatic.com/onebox/media/sports/logos/z3JEQB3coEAGLCJBEUzQ2A_48x48.png",
             "result": null
         },
         "visiting_team": {
+            "_id": "22",
+            "name": "Ba Lan",
+            "image": "https://ssl.gstatic.com/onebox/media/sports/logos/yTS_Piy3M1wUBnqU0n5aAw_48x48.png",
             "result": null
         },
         "date": "2022-12-04T15:00:00.000Z",
@@ -901,11 +919,17 @@
     },
     {
         "_id": "52",
-        "group": "Round of 16",
+        "group": "ROUND_OF_16",
         "local_team": {
+            "_id": "5",
+            "name": "Anh",
+            "image": "https://ssl.gstatic.com/onebox/media/sports/logos/DTqIL8Ba3KIuxGkpXw5ayA_48x48.png",
             "result": null
         },
         "visiting_team": {
+            "_id": "16",
+            "name": "Senegal",
+            "image": "https://ssl.gstatic.com/onebox/media/sports/logos/zw3ac5sIbH4DS6zP5auOkQ_48x48.png",
             "result": null
         },
         "date": "2022-12-04T19:00:00.000Z",
@@ -913,7 +937,7 @@
     },
     {
         "_id": "53",
-        "group": "Round of 16",
+        "group": "ROUND_OF_16",
         "local_team": {
             "result": null
         },
@@ -925,7 +949,7 @@
     },
     {
         "_id": "54",
-        "group": "Round of 16",
+        "group": "ROUND_OF_16",
         "local_team": {
             "result": null
         },
@@ -937,7 +961,7 @@
     },
     {
         "_id": "55",
-        "group": "Round of 16",
+        "group": "ROUND_OF_16",
         "local_team": {
             "result": null
         },
@@ -949,7 +973,7 @@
     },
     {
         "_id": "56",
-        "group": "Round of 16",
+        "group": "ROUND_OF_16",
         "local_team": {
             "result": null
         },
@@ -961,7 +985,7 @@
     },
     {
         "_id": "57",
-        "group": "Quarter finals",
+        "group": "QUARTER_FINAL",
         "local_team": {
             "result": null
         },
@@ -973,7 +997,7 @@
     },
     {
         "_id": "58",
-        "group": "Quarter finals",
+        "group": "QUARTER_FINAL",
         "local_team": {
             "result": null
         },
@@ -985,7 +1009,7 @@
     },
     {
         "_id": "59",
-        "group": "Quarter finals",
+        "group": "QUARTER_FINAL",
         "local_team": {
             "result": null
         },
@@ -997,7 +1021,7 @@
     },
     {
         "_id": "60",
-        "group": "Quarter finals",
+        "group": "QUARTER_FINAL",
         "local_team": {
             "result": null
         },
@@ -1009,7 +1033,7 @@
     },
     {
         "_id": "61",
-        "group": "Semi finals",
+        "group": "SEMI_FINAL",
         "local_team": {
             "result": null
         },
@@ -1021,7 +1045,7 @@
     },
     {
         "_id": "62",
-        "group": "Semi finals",
+        "group": "SEMI_FINAL",
         "local_team": {
             "result": null
         },
@@ -1033,7 +1057,7 @@
     },
     {
         "_id": "63",
-        "group": "Third place",
+        "group": "THIRD_PLACE",
         "local_team": {
             "result": null
         },
@@ -1045,7 +1069,7 @@
     },
     {
         "_id": "64",
-        "group": "Final",
+        "group": "FINAL",
         "local_team": {
             "result": null
         },

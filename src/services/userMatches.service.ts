@@ -57,7 +57,32 @@ export class UserMatchesService {
       const result = []
       for (const bet of bets) {
         const match = await MatchService.findById(bet.match_id)
-        result.push({ ...bet.toJSON(), match: match?.toJSON() })
+        let changed = 0;
+        if (match && match.has_played === true) {
+          const scoreLocal = match.local_team.result;
+          const scoreVisitor = match.visiting_team.result;
+          let winner = "tie"
+          if (scoreLocal > scoreVisitor) winner = "local"
+          if (scoreLocal < scoreVisitor) winner = "visitor"
+          if (bet.bets && bet.bets.winBet && bet.bets.winBet.betAmount) {
+            if (winner === bet.bets.winBet.value) {
+              changed += bet.bets.winBet.betAmount * 0.5
+            } else {
+              changed -= bet.bets.winBet.betAmount
+            }
+          }
+          if (bet.bets && bet.bets.scoreBet && bet.bets.scoreBet.betAmount) {
+            if (scoreLocal === bet.bets.scoreBet.localBet && scoreVisitor === bet.bets.scoreBet.visitorBet) {
+              changed += bet.bets.scoreBet.betAmount * 1
+            } else {
+              changed -= bet.bets.scoreBet.betAmount
+            }
+          }
+          // if (bet.bets && bet.bets.winBet && bet.bets.winBet.value) {
+          //   changed
+          // }
+        }
+        result.push({ ...bet.toJSON(), changed, match: match?.toJSON() })
       }
       return result;
     }
