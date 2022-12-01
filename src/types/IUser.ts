@@ -5,6 +5,8 @@ export interface IUser {
   names: string,
   surnames: string,
   score: number,
+  origin_score: number,
+  last_logined: Date,
   selected_teams: {
     champion: string,
     runner_up: string,

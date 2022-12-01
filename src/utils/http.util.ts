@@ -16,7 +16,7 @@ export class ErrorHandler extends Error {
 
 export const generateJWT = (payload: IPayload) => {
   return new Promise((resolve, reject) => {
-    sign(payload, config.secretKey, { expiresIn: "6h" }, (err, token) => {
+    sign(payload, config.secretKey, { expiresIn: "1h" }, (err, token) => {
       if (err) {
         reject('Failed to generate token');
       } else { resolve(token); }

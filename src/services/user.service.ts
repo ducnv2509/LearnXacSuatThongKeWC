@@ -25,20 +25,20 @@ export class UserService {
     return conn.name === this.dbName;
   })
   private static model: (Model<IUser> | null) = this.db === undefined ? null : this.db.model<IUser>('user', userSchema);
-  
-  constructor() {}
+
+  constructor() { }
 
   static findById(id: string) {
     this.createModel();
-    if(this.model) {
+    if (this.model) {
       return this.model.findById(id);
     }
     return;
   }
 
-  static findAll(projection={}) {
+  static findAll(projection = {}) {
     this.createModel();
-    if(this.model) {
+    if (this.model) {
       return this.model.find({}, projection);
     }
     return;
@@ -46,7 +46,7 @@ export class UserService {
 
   static create(userData: userData) {
     this.createModel();
-    if(this.model) {
+    if (this.model) {
       userData.password = generatePassword(userData.password);
       return this.model.create(userData);
     }
@@ -55,16 +55,41 @@ export class UserService {
 
   static async exists(id: string) {
     this.createModel()
-    if(this.model) {
+    if (this.model) {
       let user = await this.model.findById(id).lean();
       return user ? true : false;
     }
     return;
   }
 
+  static updatePoint(id: string, score: number, origin_score: number) {
+    this.createModel();
+    if (this.model) {
+      return this.model.findOneAndUpdate(
+        { _id: id },
+        {
+          score: score,
+          origin_score: origin_score
+        }
+      );
+    }
+    return;
+  }
+
+  static updateTimeLogin(id: string, time: Date) {
+    this.createModel();
+    if (this.model) {
+      return this.model.findOneAndUpdate(
+        { _id: id },
+        { last_logined: time }
+      );
+    }
+    return;
+  }
+
   static updateById(id: string, value: string, type: updatedType) {
     this.createModel();
-    if(this.model) {
+    if (this.model) {
       let update = {};
       const types = {
         password: () => {
@@ -73,13 +98,13 @@ export class UserService {
             password: newPassword
           }
         },
-        champion: () => ({'selected_teams.champion': value}),
-        runner_up: () => ({'selected_teams.runner_up': value}),
-        third_place: () => ({'selected_teams.third_place': value})
+        champion: () => ({ 'selected_teams.champion': value }),
+        runner_up: () => ({ 'selected_teams.runner_up': value }),
+        third_place: () => ({ 'selected_teams.third_place': value })
       }
       update = types[type]();
       return this.model.findOneAndUpdate(
-        {_id: id},
+        { _id: id },
         update
       );
     }
@@ -88,16 +113,16 @@ export class UserService {
 
   private static createModel() {
     this.validateConnection();
-    if(!this.model) {
+    if (!this.model) {
       this.model = this.db === undefined ? null : this.db.model<IUser>('user', userSchema);
     }
-    if(!this.model) {
+    if (!this.model) {
       throw new Error('Database not connected');
     }
   }
 
   private static validateConnection() {
-    if(!this.db) {
+    if (!this.db) {
       this.db = connections.find((conn) => {
         return conn.name === this.dbName;
       })

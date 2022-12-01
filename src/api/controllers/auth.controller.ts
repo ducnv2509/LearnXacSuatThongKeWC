@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { compareSync } from 'bcryptjs';
 
 import { IPayload } from '../../types';
-import { UserService } from '../../services';
+import { AddingService, UserService } from '../../services';
 import { ErrorHandler, generateJWT } from '../../utils';
 
 interface login {
@@ -13,7 +13,8 @@ interface login {
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   let { document, password } = <login>req.body;
   try {
-    let user = await UserService.findById(document)?.lean();
+    let userModel = await UserService.findById(document)
+    let user = userModel?.toJSON();
 
     if (!user) {
       throw new ErrorHandler(400, 40001, 'Invalid user or password');
@@ -27,7 +28,26 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
       document: user._id,
     }
 
+    let addedScore = Number(userModel?.score);
+    let isAdded = false;
     const token = await generateJWT(payload);
+    const now = new Date();
+    const lastLogin = userModel?.last_logined
+    if (now.getDate() !== lastLogin?.getDate() &&
+      now.getMonth() !== lastLogin?.getMonth() &&
+      now.getFullYear() !== lastLogin?.getFullYear()
+    ) {
+      isAdded = true;
+      const addedOrginScore = Number(userModel?.origin_score) + 5000;
+      addedScore = Number(userModel?.score) + 5000;
+      await UserService.updatePoint(document, addedScore, addedOrginScore);
+      await AddingService.create(
+        now, document, 5000,
+        Number(userModel?.origin_score),
+        Number(userModel?.score)
+      )
+    }
+    await UserService.updateTimeLogin(document, new Date())
     // logger.info(`Login user ${user._id}`, getExtraParams(req));
     return res
       .status(200)
@@ -35,8 +55,9 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
         token: token,
         document: user._id,
         names: user.names,
-        score: user.score,
-        selected_teams: user.selected_teams
+        score: addedScore,
+        selected_teams: user.selected_teams,
+        isAdded
       })
   } catch (err) {
     return next(err);

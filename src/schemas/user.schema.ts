@@ -33,6 +33,10 @@ export const userSchema = new Schema({
   },
   selected_teams: {
     type: selected_teams
+  },
+  last_logined: {
+    type: Date,
+    require: false
   }
 }, {
   collection: 'users',
