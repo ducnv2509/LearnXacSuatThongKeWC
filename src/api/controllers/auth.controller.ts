@@ -35,11 +35,11 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     const lastLogin = userModel?.last_logined
     if (!lastLogin || !sameDay(now, lastLogin)) {
       isAdded = true;
-      const addedOrginScore = Number(userModel?.origin_score) + 5000;
-      addedScore = Number(userModel?.score) + 5000;
+      const addedOrginScore = Number(userModel?.origin_score) + 20000;
+      addedScore = Number(userModel?.score) + 20000;
       await UserService.updatePoint(document, addedScore, addedOrginScore);
       await AddingService.create(
-        now, document, 5000,
+        now, document, 20000,
         Number(userModel?.origin_score),
         Number(userModel?.score)
       )
