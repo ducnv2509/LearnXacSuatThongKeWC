@@ -33,10 +33,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     const token = await generateJWT(payload);
     const now = new Date();
     const lastLogin = userModel?.last_logined
-    if (now.getDate() !== lastLogin?.getDate() &&
-      now.getMonth() !== lastLogin?.getMonth() &&
-      now.getFullYear() !== lastLogin?.getFullYear()
-    ) {
+    if (!lastLogin || !sameDay(now, lastLogin)) {
       isAdded = true;
       const addedOrginScore = Number(userModel?.origin_score) + 5000;
       addedScore = Number(userModel?.score) + 5000;
@@ -62,4 +59,10 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
   } catch (err) {
     return next(err);
   }
+}
+
+function sameDay(d1: Date, d2: Date) {
+  return d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate();
 }
