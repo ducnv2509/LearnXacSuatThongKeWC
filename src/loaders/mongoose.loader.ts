@@ -1,4 +1,5 @@
 import { Connection, createConnection } from 'mongoose';
+import { AddingService, UserService } from '../services';
 
 import { logger } from '../utils';
 
@@ -9,6 +10,10 @@ export const mongooseLoader = (dbUri: string, dbName: string) => {
     autoCreate: true
   }).asPromise()
     .then((conn: Connection) => {
+      // addPoint().catch((err) => {
+      //   console.log(err);
+      // })
+      
       conn.on('error', (err) => {
         logger.error(`Database ${ dbName } has an error`, err.message);
       })
@@ -26,3 +31,23 @@ export const mongooseLoader = (dbUri: string, dbName: string) => {
       mongooseLoader(dbUri, dbName);
     })
 }
+
+
+// async function addPoint() {
+//   console.log("abc");
+  
+//   const users = await UserService.findAll()
+//   if (!users) return;
+//   for (const user of users) {
+//     const oldScore = user.score;
+//     const oldOrigin = user.origin_score;
+//     const amount = 1000000;
+//     user.score += amount;
+//     user.origin_score += amount;
+//     await AddingService.create(
+//       new Date(), user._id,
+//       amount, oldOrigin, oldScore
+//     )
+//     user.save()
+//   }
+// }
