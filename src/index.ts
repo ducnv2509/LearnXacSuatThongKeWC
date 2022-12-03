@@ -28,10 +28,10 @@ const startServer: Function = () => {
     console.log(`Server running on: http://localhost:${config.port}`);
     logger.info('HTTP server connected');
   })
-  .on('error', (err) => {
-    logger.error('Connection failed', err.message);
-    process.exit(1);
-  })
+    .on('error', (err) => {
+      logger.error('Connection failed', err.message);
+      process.exit(1);
+    })
 }
 
 startServer();
